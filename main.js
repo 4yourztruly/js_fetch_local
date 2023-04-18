@@ -22,6 +22,30 @@ function readFilePromise() {
         })
 }
 
+//async function
+async function readFileAsync() {
+
+    let data = await fetch('customers.json');
+    let customers = await data.json();
+    generatedHTML(customers);
+
+}
+
+async function readFileAsync2() {
+
+    try {
+            let data = await fetch('customers.json');
+            let customers = await data.json();
+            generatedHTML(customers);
+
+    }
+
+    catch {
+            console.log('Error, could not read from json file.');
+
+    }
+}
+
 //render HTML
 function generatedHTML(customers) {
 
@@ -42,3 +66,5 @@ function generatedHTML(customers) {
 }
 
 readFilePromise();
+readFileAsync();
+readFileAsync2();
